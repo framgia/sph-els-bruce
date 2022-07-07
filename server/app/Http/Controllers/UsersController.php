@@ -73,8 +73,13 @@ class UsersController extends Controller
                     'message' => 'Invalid Credentials'
                 ]);
             } else {
-
-                $token = $user->createToken($user->email . '_Token')->plainTextToken;
+                if ($user->isAdmin === 1) {
+                    $role = 'admin';
+                    $token = $user->createToken($user->email . '_AdminToken', ['server:admin'])->plainTextToken;
+                } else {
+                    $role = '';
+                    $token = $user->createToken($user->email . '_Token')->plainTextToken;
+                }
 
                 return response()->json([
                     'status' => 200,
@@ -82,6 +87,7 @@ class UsersController extends Controller
                     'data' => $user,
                     'token' => $token,
                     'message' => 'Successfully Login',
+                    'role' => $role,
                 ]);
             }
         }
