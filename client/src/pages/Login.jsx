@@ -32,7 +32,6 @@ function Login(props) {
         localStorage.setItem("auth_token", res.data.token);
         localStorage.setItem("auth_name", res.data.username);
         swal("Success", res.data.message, "success");
-        // console.log(res.data.role);
         if (res.data.role == "admin") {
           window.location = "/admin/dashboard";
         } else {

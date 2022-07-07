@@ -3,7 +3,6 @@ import Registration from "./pages/Registration";
 import Navbar from "./pages/Navbar";
 import Login from "./pages/Login";
 import { BrowserRouter, Router, Routes, Route } from "react-router-dom";
-// import AdminDashboard from "./pages/admin/Dashboard";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./components/user/Dashboard";
 import axios from "axios";
@@ -37,7 +36,6 @@ function App() {
             element={auth ? <Dashboard /> : <Registration />}
           />
           <Route path="/dashboard" element={auth ? <Dashboard /> : <Login />} />
-          {/* <Route path="/admin/dashboard" element={<AdminDashboard />} /> */}
         </Routes>
       </div>
     </BrowserRouter>

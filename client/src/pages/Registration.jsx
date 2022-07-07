@@ -8,7 +8,7 @@ import UserRegisterApi from "../api/UserRegisterApi";
 function Registration({ params }) {
   const navigate = useNavigate();
 
-  const [registerInput, setRegister] = useState({
+  const [registerInput, setRegisterInput] = useState({
     firstname: "",
     lastname: "",
     email: "",
@@ -20,7 +20,7 @@ function Registration({ params }) {
 
   const handleInput = (e) => {
     e.preventDefault();
-    setRegister({ ...registerInput, [e.target.name]: e.target.value });
+    setRegisterInput({ ...registerInput, [e.target.name]: e.target.value });
   };
 
   const registerSubmit = (e) => {
