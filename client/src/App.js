@@ -1,10 +1,12 @@
-import "./App.css";
-import Registration from "./components/Registration";
-import Navbar from "./components/layout/Navbar";
-import Login from "./components/Login";
+import "./assets/style.css";
+import Registration from "./pages/Registration";
+import Navbar from "./pages/Navbar";
+import Login from "./pages/Login";
 import { BrowserRouter, Router, Routes, Route } from "react-router-dom";
+import AdminDashboard from "./pages/components/admin/Dashboard.jsx";
+import AddCategories from "./pages/components/admin/AddCategories";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Dashboard from "./components/user/Dashboard";
+import Dashboard from "./pages/components/user/Dashboard";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -35,7 +37,9 @@ function App() {
             path="/register"
             element={auth ? <Dashboard /> : <Registration />}
           />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={auth ? <Dashboard /> : <Login />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/addcategories" element={<AddCategories />} />
         </Routes>
       </div>
     </BrowserRouter>
