@@ -1,7 +1,7 @@
 import "./App.css";
-import Registration from "./components/Registration";
-import Navbar from "./components/layout/Navbar";
-import Login from "./components/Login";
+import Registration from "./pages/Registration";
+import Navbar from "./pages/Navbar";
+import Login from "./pages/Login";
 import { BrowserRouter, Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./components/user/Dashboard";
@@ -35,7 +35,7 @@ function App() {
             path="/register"
             element={auth ? <Dashboard /> : <Registration />}
           />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={auth ? <Dashboard /> : <Login />} />
         </Routes>
       </div>
     </BrowserRouter>
