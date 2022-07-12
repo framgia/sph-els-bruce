@@ -26,10 +26,10 @@ class UsersController extends Controller
         );
 
         if ($validator->fails()) {
-            return response()->json([
-                'status' => "422",
-                'validate_err' => $validator->errors(),
-            ]);
+            return response()->json(
+                $validator->errors(),
+                422
+            );
         }
 
 
