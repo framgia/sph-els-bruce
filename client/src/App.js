@@ -1,4 +1,5 @@
-import "./assets/style.css";
+
+import "./App.css";
 import Registration from "./pages/Registration";
 import Navbar from "./pages/Navbar";
 import Login from "./pages/Login";
@@ -32,14 +33,10 @@ function App() {
       <Navbar />
       <div className="App">
         <Routes>
-          <Route path="/" element={auth ? <Dashboard /> : <Login />} />
-          <Route
-            path="/register"
-            element={auth ? <Dashboard /> : <Registration />}
-          />
-          <Route path="/dashboard" element={auth ? <Dashboard /> : <Login />} />
+
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/addcategories" element={<AddCategories />} />
+
         </Routes>
       </div>
     </BrowserRouter>
