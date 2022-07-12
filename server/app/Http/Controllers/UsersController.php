@@ -18,7 +18,7 @@ class UsersController extends Controller
 
             $request->all(),
             [
-                'firstname' => 'required|string|min:4',
+                'firstname' => 'required|string',
                 'lastname' => 'required|string',
                 'email' => 'required|string|unique:users,email',
                 'password' => 'required|string|confirmed',
@@ -96,9 +96,9 @@ class UsersController extends Controller
     public function logout(Request $request, User $user)
     {
         $user->tokens()->delete();
-        return [
-            'status' => 200,
-            'message' => 'Logged Out'
-        ];
+        return response()->json(
+            ["message" => "Logout"],
+            200
+        );
     }
 }

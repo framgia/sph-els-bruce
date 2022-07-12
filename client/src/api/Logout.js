@@ -1,4 +1,4 @@
-import USERAPI from "./ApiBase";
+import BASEAPI from "./ApiBase";
 
 const Logout = {
   LogoutUser: () => {
@@ -7,7 +7,7 @@ const Logout = {
       url: "/logout",
     };
 
-    return USERAPI.request(options);
+    return BASEAPI.request(options);
   },
 };
 
