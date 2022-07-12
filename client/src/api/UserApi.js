@@ -10,8 +10,8 @@ const UserApi = {
       method: "POST",
       url: "/login",
       data: {
-        email: email,
-        password: password,
+        email,
+        password,
       },
     };
     return USERAPI.request(options);

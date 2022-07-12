@@ -1,12 +1,17 @@
 import React from "react";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import UserApi from "../api/UserApi";
 import { useNavigate } from "react-router-dom";
 
 import UserRegisterApi from "../api/UserRegisterApi";
 
 function Registration({ params }) {
-  const navigate = useNavigate();
+  useEffect(() => {
+    if (UserApi.isLogin()) {
+      window.location = "/dashboard";
+      // console.log(UserApi.isLogin);
+    }
+  }, []);
 
   const [registerInput, setRegisterInput] = useState({
     firstname: "",
