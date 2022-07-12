@@ -28,10 +28,8 @@ const AddCategory = () => {
       .then((response) => {
         swal("Success", response.data.message, "success");
         setTimeout(() => {
-
           window.location = "/admin/dashboard";
         }, 2000);
-
       })
       .catch(({ response }) => {
         setError_list(response.data.validate_err);

@@ -13,7 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
+<<<<<<< HEAD
+        Schema::create('user', function (Blueprint $table) {
+=======
         Schema::create('users', function (Blueprint $table) {
+>>>>>>> 3ffcedd (Admin able to add new word in category)
             $table->id();
             $table->string('firstname');
             $table->string('lastname');

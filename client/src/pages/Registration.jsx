@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import UserApi from "../api/UserApi";
 import swal from "sweetalert";
-import { useNavigate } from "react-router-dom";
 import UserRegisterApi from "../api/UserRegisterApi";
 
 function Registration({ params }) {
@@ -39,9 +38,14 @@ function Registration({ params }) {
     };
     UserRegisterApi.registerUser(data)
       .then((response) => {
+<<<<<<< HEAD
         localStorage.setItem("auth_token", response.data.token);
         localStorage.setItem("auth_name", response.data.username);
-
+        swal("Success", response.data.message, "success");
+=======
+        localStorage.setItem("auth_token", response.token);
+        localStorage.setItem("auth_name", response.username);
+>>>>>>> ca712b3 (Features/Restructure codes for user and registration FE (#8))
         window.location = "/dashboard";
       })
       .catch(({ response }) => {
