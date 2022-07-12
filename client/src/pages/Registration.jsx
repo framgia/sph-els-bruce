@@ -9,7 +9,6 @@ function Registration({ params }) {
   useEffect(() => {
     if (UserApi.isLogin()) {
       window.location = "/dashboard";
-      // console.log(UserApi.isLogin);
     }
   }, []);
 
@@ -40,8 +39,8 @@ function Registration({ params }) {
     };
     UserRegisterApi.registerUser(data)
       .then((response) => {
-        localStorage.setItem("auth_token", response.data.token);
-        localStorage.setItem("auth_name", response.data.username);
+        localStorage.setItem("auth_token", response.token);
+        localStorage.setItem("auth_name", response.username);
         window.location = "/dashboard";
       })
       .catch(({ response }) => {
