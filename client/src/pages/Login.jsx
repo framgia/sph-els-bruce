@@ -4,9 +4,14 @@ import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 import UserApi from "../api/UserApi";
+import { useEffect } from "react";
 
 function Login(props) {
-  const navigate = useNavigate();
+  useEffect(() => {
+    if (UserApi.isLogin()) {
+      window.location = "/dashboard";
+    }
+  }, []);
 
   const [loginInput, setLoginInput] = useState({
     email: "",
