@@ -12,11 +12,11 @@ const UserRegisterApi = {
       method: "POST",
       url: "/register",
       data: {
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        password: password,
-        password_confirmation: password_confirmation,
+        firstname,
+        lastname,
+        email,
+        password,
+        password_confirmation,
       },
     };
 
