@@ -35,6 +35,7 @@ function App() {
           <Route path="/admin/add-category" element={<AddCategory />} />
           <Route path="/admin/edit-category/:id" element={<EditCategory />} />
           <Route path="/admin/add-word/:id" element={<AddWord />} />
+
         </Routes>
       </div>
     </BrowserRouter>

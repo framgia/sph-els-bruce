@@ -1,7 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import UserApi from "../api/UserApi";
+
 import swal from "sweetalert";
+
 import UserRegisterApi from "../api/UserRegisterApi";
 
 function Registration({ params }) {
@@ -38,9 +40,10 @@ function Registration({ params }) {
     };
     UserRegisterApi.registerUser(data)
       .then((response) => {
+
         localStorage.setItem("auth_token", response.data.token);
         localStorage.setItem("auth_name", response.data.username);
-        swal("Success", response.data.message, "success");
+
         window.location = "/dashboard";
       })
       .catch(({ response }) => {
