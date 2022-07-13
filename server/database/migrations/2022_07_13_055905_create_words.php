@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user', function (Blueprint $table) {
+        Schema::create('words', function (Blueprint $table) {
             $table->id();
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->integer('isAdmin')->default(0);
-            $table->rememberToken();
+            $table->foreignId('lesson_id')->constrained();
+            $table->string('word')->unique();
+            $table->string('choiceA');
+            $table->string('choiceB');
+            $table->string('choiceC');
+            $table->string('choiceD');
+            $table->string('answer');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user');
+        Schema::dropIfExists('words');
     }
 };

@@ -1,12 +1,9 @@
 import React from "react";
-import { useEffect } from "react";
+
 import AdminApi from "../../../api/AdminApi";
 
 const Dashboard = () => {
-  useEffect((e) => {
-    e.preventDefault();
-  }, []);
-  if (AdminApi) {
+  if (AdminApi.isAdmin() === "admin@gmail.com") {
     window.location = "/admin/dashboard";
   }
 
