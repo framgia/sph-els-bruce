@@ -18,24 +18,12 @@ const AddCategories = () => {
           <div className="flex mt-5">
             <h4>Add Categories</h4>
             <div className="form-floating">
-              <input
-                type="email"
-                name="email"
-                className="form-control"
-                //   value={}
-                //   onChange={}
-              />
-              <label>Email address</label>
+              <input type="email" name="email" className="form-control" />
+              <label>Title</label>
               <span className="text-danger">{}</span>
             </div>
             <div className="form-floating mt-2">
-              <textarea
-                type="email"
-                name="email"
-                className="form-control"
-                //   value={}
-                //   onChange={}
-              />
+              <textarea type="email" name="email" className="form-control" />
               <label>Description</label>
               <span className="text-danger">{}</span>
             </div>
