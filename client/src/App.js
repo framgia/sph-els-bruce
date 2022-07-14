@@ -22,20 +22,20 @@ axios.interceptors.request.use(function (config) {
 });
 
 function App() {
-  const [auth, setAuth] = useState();
-
-  useEffect(() => {
-    setAuth(localStorage.getItem("auth_token"));
-  }, [auth]);
-
   return (
     <BrowserRouter>
       <Navbar />
       <div className="App">
         <Routes>
 
+
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/addcategories" element={<AddCategories />} />
+
+
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Registration />} />
+          <Route path="/dashboard" element={<Dashboard />} />
 
         </Routes>
       </div>

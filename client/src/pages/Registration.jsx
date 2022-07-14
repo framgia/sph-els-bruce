@@ -1,12 +1,16 @@
 import React from "react";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import UserApi from "../api/UserApi";
 import { useNavigate } from "react-router-dom";
 
 import UserRegisterApi from "../api/UserRegisterApi";
 
 function Registration({ params }) {
-  const navigate = useNavigate();
+  useEffect(() => {
+    if (UserApi.isLogin()) {
+      window.location = "/dashboard";
+    }
+  }, []);
 
   const [registerInput, setRegisterInput] = useState({
     firstname: "",
@@ -35,8 +39,8 @@ function Registration({ params }) {
     };
     UserRegisterApi.registerUser(data)
       .then((response) => {
-        localStorage.setItem("auth_token", response.data.token);
-        localStorage.setItem("auth_name", response.data.username);
+        localStorage.setItem("auth_token", response.token);
+        localStorage.setItem("auth_name", response.username);
         window.location = "/dashboard";
       })
       .catch(({ response }) => {
