@@ -3,8 +3,10 @@ import Registration from "./pages/Registration";
 import Navbar from "./pages/Navbar";
 import Login from "./pages/Login";
 import { BrowserRouter, Router, Routes, Route } from "react-router-dom";
+import AdminDashboard from "./pages/components/admin/Dashboard.jsx";
+import AddCategories from "./pages/components/admin/AddCategories";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Dashboard from "./components/user/Dashboard";
+import Dashboard from "./pages/components/user/Dashboard";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -24,6 +26,11 @@ function App() {
       <Navbar />
       <div className="App">
         <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Registration />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/addcategories" element={<AddCategories />} />
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/dashboard" element={<Dashboard />} />
