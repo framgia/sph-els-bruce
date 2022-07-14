@@ -31,9 +31,6 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/addcategories" element={<AddCategories />} />
-          <Route path="/" element={<Login />} />
-          <Route path="/register" element={<Registration />} />
-          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </div>
     </BrowserRouter>
