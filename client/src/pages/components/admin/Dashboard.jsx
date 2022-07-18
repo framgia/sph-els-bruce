@@ -19,12 +19,17 @@ const Dashboard = () => {
     e.preventDefault();
     const Clicked = e.currentTarget;
     Clicked.innerText = "Deleting...";
-    await AdminApi.deleteCategory(id).then((res) => {
-      swal("Success", "Successfully Deleted.", "success");
-      setTimeout(() => {
-        window.location = "/admin/dashboard";
-      }, 2000);
-    });
+    await AdminApi.deleteCategory(id)
+      .then((res) => {
+        swal("Success", "Successfully Deleted.", "success");
+        setTimeout(() => {
+          window.location = "/admin/dashboard";
+        }, 2000);
+      })
+      .catch(() => {
+        Clicked.innerText = "Delete";
+        alert("Cannot be delete it contains words");
+      });
   };
   return (
     <>
