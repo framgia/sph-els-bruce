@@ -11,7 +11,7 @@ const Dashboard = () => {
     const res = await AdminApi.viewCategory();
     setCategoryList(res.data);
   };
-  console.log(categoryList);
+
   useEffect(() => {
     category();
   }, []);
@@ -20,12 +20,19 @@ const Dashboard = () => {
     e.preventDefault();
     const Clicked = e.currentTarget;
     Clicked.innerText = "Deleting...";
-    await AdminApi.deleteCategory(id).then((res) => {
-      swal("Success", "Successfully Deleted.", "success");
-      setTimeout(() => {
-        window.location = "/admin/dashboard";
-      }, 2000);
-    });
+
+    await AdminApi.deleteCategory(id)
+      .then((res) => {
+        swal("Success", "Successfully Deleted.", "success");
+        setTimeout(() => {
+          window.location = "/admin/dashboard";
+        }, 2000);
+      })
+      .catch(() => {
+        Clicked.innerText = "Delete";
+        alert("Cannot be delete it contains words");
+      });
+
   };
   return (
     <>
@@ -80,5 +87,6 @@ const Dashboard = () => {
     </>
   );
 };
+
 
 export default Dashboard;
