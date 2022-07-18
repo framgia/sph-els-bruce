@@ -1,4 +1,4 @@
-import USERAPI from "./ApiBase";
+import BASEAPI from "./ApiBase";
 
 const UserRegisterApi = {
   registerUser: ({
@@ -20,7 +20,7 @@ const UserRegisterApi = {
       },
     };
 
-    return USERAPI.request(options);
+    return BASEAPI.request(options);
   },
 };
 

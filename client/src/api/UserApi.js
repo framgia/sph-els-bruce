@@ -1,4 +1,4 @@
-import USERAPI from "./ApiBase";
+import BASEAPI from "./ApiBase";
 
 const UserApi = {
   isLogin: () => {
@@ -14,7 +14,7 @@ const UserApi = {
         password,
       },
     };
-    return USERAPI.request(options);
+    return BASEAPI.request(options);
   },
 };
 

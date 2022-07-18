@@ -1,28 +1,53 @@
 import axios from "axios";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+
 import swal from "sweetalert";
+import AdminApi from "../api/AdminApi";
 import Logout from "../api/Logout";
 import UserApi from "../api/UserApi";
 
 const Navbar = () => {
-  const navigate = useNavigate();
   const logoutSubmit = (e) => {
     e.preventDefault();
 
     Logout.LogoutUser().then((res) => {
-      if (res.data.status === 200) {
-        localStorage.removeItem("auth_token");
-        localStorage.removeItem("auth_name");
-        swal("Success", res.data.message, "success");
+      localStorage.removeItem("auth_token");
+      localStorage.removeItem("auth_name");
+      swal("Success", res.data.message, "success");
+      setTimeout(() => {
         window.location = "/";
-      }
+      }, 3000);
     });
   };
 
   var AuthButtons = "";
 
-  if (!UserApi.isLogin()) {
+  if (AdminApi.isAdmin() === "admin@gmail.com") {
+    AuthButtons = (
+      <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li className="nav-item">
+          <Link className="nav-link" to="/admin/dashboard">
+            Category
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/admin/add-category">
+            Add Category
+          </Link>
+        </li>
+        <li className="nav-item">
+          <button
+            type="button"
+            onClick={logoutSubmit}
+            className="nav-link btn btn-danger btn-sm text-white"
+          >
+            Logout
+          </button>
+        </li>
+      </ul>
+    );
+  } else if (!UserApi.isLogin()) {
     AuthButtons = (
       <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
         <li className="nav-item">
@@ -41,7 +66,7 @@ const Navbar = () => {
     AuthButtons = (
       <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <Link className="nav-link" to="/">
+          <Link className="nav-link" to="/dashboard">
             Home
           </Link>
         </li>
@@ -60,7 +85,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow sticky-top">
       <div className="container">
-        <Link className="navbar-brand" to="/dashboard">
+        <Link className="navbar-brand" to="/  ">
           E-Learning
         </Link>
       </div>

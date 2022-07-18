@@ -2,7 +2,7 @@ import axios from "axios";
 
 const TOKEN = localStorage.getItem("auth_token");
 
-const USERAPI = axios.create({
+const BASEAPI = axios.create({
   baseURL: `${process.env.REACT_APP_SERVER_API}/api`,
   headers: {
     "Content-Type": "application/json",
@@ -10,4 +10,4 @@ const USERAPI = axios.create({
   },
 });
 
-export default USERAPI;
+export default BASEAPI;

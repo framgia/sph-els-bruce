@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
-import { useNavigate } from "react-router-dom";
 import UserApi from "../api/UserApi";
 import { useEffect } from "react";
 
@@ -37,10 +36,10 @@ function Login(props) {
         localStorage.setItem("auth_token", res.data.token);
         localStorage.setItem("auth_name", res.data.username);
         swal("Success", res.data.message, "success");
-        if (res.data.role == "admin") {
+        if (res.data.role === "admin") {
           window.location = "/admin/dashboard";
         } else {
-          window.location = "/";
+          window.location = "/dashboard";
         }
       } else if (res.data.status === 401) {
         swal("Warning", res.data.message, "warning");
