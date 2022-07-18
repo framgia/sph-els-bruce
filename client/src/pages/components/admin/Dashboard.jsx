@@ -11,7 +11,6 @@ const Dashboard = () => {
     const res = await AdminApi.viewCategory();
     setCategoryList(res.data);
   };
-  console.log(categoryList);
   useEffect(() => {
     category();
   }, []);
