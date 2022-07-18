@@ -37,7 +37,6 @@ const AddWord = () => {
         setTimeout(() => {}, 2000);
       })
       .catch(({ response }) => {
-        console.log(response.data);
         setError_list(response.data);
       });
   };
