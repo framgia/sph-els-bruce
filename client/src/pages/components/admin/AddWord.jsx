@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import React from "react";
 import WordApi from "../../../api/WordApi";
@@ -109,6 +110,7 @@ const AddWord = () => {
       </form>
     </div>
   );
+
 };
 
 export default AddWord;
