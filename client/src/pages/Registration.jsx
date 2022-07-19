@@ -38,14 +38,9 @@ function Registration({ params }) {
     };
     UserRegisterApi.registerUser(data)
       .then((response) => {
-<<<<<<< HEAD
         localStorage.setItem("auth_token", response.data.token);
         localStorage.setItem("auth_name", response.data.username);
         swal("Success", response.data.message, "success");
-=======
-        localStorage.setItem("auth_token", response.token);
-        localStorage.setItem("auth_name", response.username);
->>>>>>> ca712b3 (Features/Restructure codes for user and registration FE (#8))
         window.location = "/dashboard";
       })
       .catch(({ response }) => {
