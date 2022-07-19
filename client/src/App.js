@@ -34,7 +34,6 @@ function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
-
           <Route path="/admin/add-category" element={<AddCategory />} />
           <Route path="/admin/edit-category/:id" element={<EditCategory />} />
           <Route path="/admin/add-word/:id" element={<AddWord />} />

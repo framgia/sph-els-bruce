@@ -1,4 +1,3 @@
-
 import { Button } from "bootstrap";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -12,6 +11,7 @@ const Dashboard = () => {
     const res = await AdminApi.viewCategory();
     setCategoryList(res.data);
   };
+
   useEffect(() => {
     category();
   }, []);
@@ -20,6 +20,7 @@ const Dashboard = () => {
     e.preventDefault();
     const Clicked = e.currentTarget;
     Clicked.innerText = "Deleting...";
+
     await AdminApi.deleteCategory(id)
       .then((res) => {
         swal("Success", "Successfully Deleted.", "success");
@@ -31,6 +32,7 @@ const Dashboard = () => {
         Clicked.innerText = "Delete";
         alert("Cannot be delete it contains words");
       });
+
   };
   return (
     <>

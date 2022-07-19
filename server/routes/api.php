@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CatergoryController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\WordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 //public routes
 Route::post('/register', [UsersController::class, 'register']);
 Route::post('/login', [UsersController::class, 'login']);
+Route::post('/admin/create-word', [WordController::class, 'store']);
 
 //Protect routes
 Route::middleware('auth:sanctum')->group(function () {
