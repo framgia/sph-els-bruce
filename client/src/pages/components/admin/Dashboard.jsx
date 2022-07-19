@@ -11,7 +11,6 @@ const Dashboard = () => {
     const res = await AdminApi.viewCategory();
     setCategoryList(res.data);
   };
-
   useEffect(() => {
     category();
   }, []);
@@ -32,7 +31,6 @@ const Dashboard = () => {
         Clicked.innerText = "Delete";
         alert("Cannot be delete it contains words");
       });
-
   };
   return (
     <>
@@ -60,6 +58,7 @@ const Dashboard = () => {
                       Add Word
                     </Link>
                   </td>
+
                   <td>
                     <Link
                       to={`/admin/edit-category/${item.id}`}
@@ -69,7 +68,6 @@ const Dashboard = () => {
                       Edit
                     </Link>
                   </td>
-
                   <td>
                     <button
                       onClick={(e) => deleteCategory(e, item.id)}
@@ -87,6 +85,5 @@ const Dashboard = () => {
     </>
   );
 };
-
 
 export default Dashboard;

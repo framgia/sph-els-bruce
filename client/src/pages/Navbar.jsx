@@ -1,8 +1,5 @@
 import React from "react";
-
 import { Link } from "react-router-dom";
-
-
 import swal from "sweetalert";
 import AdminApi from "../api/AdminApi";
 import Logout from "../api/Logout";
@@ -69,6 +66,11 @@ const Navbar = () => {
         <li className="nav-item">
           <Link className="nav-link" to="/dashboard">
             Home
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/lesson-Dashboard">
+            Category
           </Link>
         </li>
         <li className="nav-item">
