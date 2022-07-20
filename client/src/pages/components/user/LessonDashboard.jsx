@@ -31,7 +31,10 @@ const LessonDashboard = () => {
                 <div className="card-body">
                   <h5 className="card-title">{item.title}</h5>
                   <p className="card-text">{item.description}</p>
-                  <Link to={``} className="btn btn-primary">
+                  <Link
+                    to={`/answer-lesson/${item.id}`}
+                    className="btn btn-primary"
+                  >
                     Start Learning
                   </Link>
                 </div>
