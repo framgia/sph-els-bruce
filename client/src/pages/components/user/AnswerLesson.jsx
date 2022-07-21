@@ -6,6 +6,7 @@ import { useParams } from "react-router";
 import LessonApi from "../../../api/LessonApi";
 import UserApi from "../../../api/UserApi";
 import { useNavigate } from "react-router";
+import swal from "sweetalert";
 
 const AnswerLesson = () => {
   if (!UserApi.isLogin()) {
@@ -13,20 +14,27 @@ const AnswerLesson = () => {
   }
 
   const [page, setPage] = useState(0);
-  const [result, setResult] = useState([]);
+  const [word, setword] = useState([]);
   const [question, setQuestion] = useState([]);
   const [numOfQuestion, setNumOfQuestion] = useState();
   const [selectedAnswer, setSelectedAnswer] = useState([]);
   const [correctAnswer, setCorrectAnswer] = useState([]);
+  const [lessonId, setLessonId] = useState(0);
 
-  const param = useParams();
-  const id = param.id;
+  const { id } = useParams();
+
   const navigate = useNavigate();
+
+  // console.log(o)
   const questions = () => {
-    LessonApi.getQuestion(id).then((res) => {
-      setQuestion(res.data.words[page]);
-      setCorrectAnswer(res.data.answer);
-      setNumOfQuestion(res.data.words.length);
+    LessonApi.getLessonId(id).then((res) => {
+      let id = res.data[0].id;
+      LessonApi.getQuestion(id).then((res) => {
+        setQuestion(res.data.words[page]);
+        setCorrectAnswer(res.data.answer);
+        setword(res.data.words);
+        setNumOfQuestion(res.data.words.length);
+      });
     });
   };
 
@@ -46,11 +54,11 @@ const AnswerLesson = () => {
 
   useEffect(() => {
     if (page === numOfQuestion - 1 && selectedAnswer.length === numOfQuestion) {
-      alert("FORM SUBMITTED");
+      swal("Success", "Thank you for answering.", "success");
       const result = correctAnswer.map(
         (item, index) => item.answer === selectedAnswer[index]
       );
-      navigate("/dashboard", { state: { result } });
+      navigate("/answer-result", { state: { result, word, id } });
     }
   }, [page, selectedAnswer]);
 
