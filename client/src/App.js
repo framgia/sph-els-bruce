@@ -7,8 +7,9 @@ import AdminDashboard from "./pages/components/admin/Dashboard.jsx";
 
 import AddCategory from "./pages/components/admin/AddCategory";
 import EditCategory from "./pages/components/admin/EditCategory";
+import AnswerLesson from "./pages/components/user/AnswerLesson";
 import AddWord from "./pages/components/admin/AddWord";
-
+import LessonDashboard from "./pages/components/user/LessonDashboard";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./pages/components/user/Dashboard";
 import LessonDashboard from "./pages/components/user/LessonDashboard";
@@ -34,7 +35,7 @@ function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/lesson-dashboard" element={<LessonDashboard />} />
-          <Route path="/lesson-dashboard" element={<LessonDashboard />} />
+          <Route path="/answer-lesson/:id" element={<AnswerLesson />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/add-category" element={<AddCategory />} />
           <Route path="/admin/edit-category/:id" element={<EditCategory />} />

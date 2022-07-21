@@ -15,4 +15,10 @@ class Lesson extends Model
     {
         return $this->hasMany(Word::class);
     }
+
+
+    public function category()
+    {
+        return $this->hasOne(Category::class);
+    }
 }

@@ -14,4 +14,9 @@ class Category extends Model
         'description',
 
     ];
+
+    public function lesson()
+    {
+        return $this->hasOne(Lesson::class);
+    }
 }
