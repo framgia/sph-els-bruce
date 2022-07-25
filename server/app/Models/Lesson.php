@@ -9,7 +9,7 @@ class Lesson extends Model
 {
     use HasFactory;
 
-
+    protected $guarded = [];
 
     public function words()
     {
@@ -20,5 +20,10 @@ class Lesson extends Model
     public function category()
     {
         return $this->hasOne(Category::class);
+    }
+
+    public function Result()
+    {
+        return $this->hasMany(Result::class);
     }
 }

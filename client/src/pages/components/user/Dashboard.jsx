@@ -1,5 +1,6 @@
 import React from "react";
-
+import { useEffect } from "react";
+import { useLocation } from "react-router";
 import AdminApi from "../../../api/AdminApi";
 
 const Dashboard = () => {

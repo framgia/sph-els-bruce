@@ -1,7 +1,15 @@
 import BASEAPI from "./ApiBase";
 
 const WordApi = {
-  createWord: ({ word, choiceA, choiceB, choiceC, choiceD, answer }) => {
+  createWord: ({
+    word,
+    choiceA,
+    choiceB,
+    choiceC,
+    choiceD,
+    answer,
+    lesson_id,
+  }) => {
     const options = {
       method: "POST",
       url: "/admin/create-word",
@@ -12,6 +20,7 @@ const WordApi = {
         choiceC,
         choiceD,
         answer,
+        lesson_id,
       },
     };
 

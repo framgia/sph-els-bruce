@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import AdminApi from "../../../api/AdminApi";
 import swal from "sweetalert";
+import LessonApi from "../../../api/LessonApi";
 
 const AddCategory = () => {
   const [categoriesInput, setCategoriesInput] = useState({
@@ -25,8 +26,15 @@ const AddCategory = () => {
     };
 
     AdminApi.createCategory(data)
-      .then((response) => {
-        swal("Success", response.data.message, "success");
+      .then((res) => {
+        const data1 = {
+          category_id: res.data.data.id,
+          name: res.data.data.title,
+        };
+        LessonApi.createLesson(data1).then((res) => {
+          swal("Success", res.data.message, "success");
+        });
+
         setTimeout(() => {
           window.location = "/admin/dashboard";
         }, 2000);

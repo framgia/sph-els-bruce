@@ -1,12 +1,12 @@
 import React from "react";
 import { useEffect } from "react";
-import { useCallback } from "react";
 import { useState } from "react";
 import { useParams } from "react-router";
 import LessonApi from "../../../api/LessonApi";
 import UserApi from "../../../api/UserApi";
 import { useNavigate } from "react-router";
 import swal from "sweetalert";
+import ResultApi from "../../../api/ResultApi";
 
 const AnswerLesson = () => {
   if (!UserApi.isLogin()) {
@@ -15,20 +15,21 @@ const AnswerLesson = () => {
 
   const [page, setPage] = useState(0);
   const [word, setword] = useState([]);
+
+  const [lessonID, setLessonID] = useState([]);
   const [question, setQuestion] = useState([]);
   const [numOfQuestion, setNumOfQuestion] = useState();
   const [selectedAnswer, setSelectedAnswer] = useState([]);
   const [correctAnswer, setCorrectAnswer] = useState([]);
-  const [lessonId, setLessonId] = useState(0);
 
   const { id } = useParams();
 
   const navigate = useNavigate();
 
-  // console.log(o)
   const questions = () => {
     LessonApi.getLessonId(id).then((res) => {
       let id = res.data[0].id;
+      setLessonID(res.data[0].id);
       LessonApi.getQuestion(id).then((res) => {
         setQuestion(res.data.words[page]);
         setCorrectAnswer(res.data.answer);
@@ -52,13 +53,30 @@ const AnswerLesson = () => {
     questions();
   }, [page]);
 
+  const saveResult = (score) => {
+    const data = {
+      lesson_id: lessonID,
+      score: score,
+    };
+    ResultApi.postResult(data);
+  };
+
   useEffect(() => {
     if (page === numOfQuestion - 1 && selectedAnswer.length === numOfQuestion) {
       swal("Success", "Thank you for answering.", "success");
-      const result = correctAnswer.map(
-        (item, index) => item.answer === selectedAnswer[index]
-      );
-      navigate("/answer-result", { state: { result, word, id } });
+      let score = 0;
+      const result = correctAnswer.map((item, index) => {
+        if (item.answer === selectedAnswer[index]) {
+          score++;
+          return true;
+        } else {
+          return false;
+        }
+      });
+      saveResult(score);
+      navigate("/answer-result", {
+        state: { result, word, id },
+      });
     }
   }, [page, selectedAnswer]);
 
