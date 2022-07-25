@@ -19,4 +19,24 @@ class LessonController extends Controller
             'answer' => $answer,
         ], 200);
     }
+
+    public function select($id, Lesson $lesson)
+    {
+
+        $lesson = Lesson::where('category_id', $id)->get();
+        return response()->json(
+            $lesson,
+            200
+        );
+    }
+
+
+    public function create()
+    {
+        $lesson = Lesson::create([
+            'category_id' => request()->category_id,
+            'name' => request()->name,
+        ]);
+        return response()->json(200);
+    }
 }

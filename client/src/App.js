@@ -4,15 +4,14 @@ import Navbar from "./pages/Navbar";
 import Login from "./pages/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdminDashboard from "./pages/components/admin/Dashboard.jsx";
-
 import AddCategory from "./pages/components/admin/AddCategory";
 import EditCategory from "./pages/components/admin/EditCategory";
 import AnswerLesson from "./pages/components/user/AnswerLesson";
 import AddWord from "./pages/components/admin/AddWord";
 import LessonDashboard from "./pages/components/user/LessonDashboard";
+import AnswerResult from "./pages/components/user/AnswerResult.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./pages/components/user/Dashboard";
-import LessonDashboard from "./pages/components/user/LessonDashboard";
 import axios from "axios";
 
 axios.defaults.baseURL = "http://127.0.0.1:8000/";
@@ -35,6 +34,7 @@ function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/lesson-dashboard" element={<LessonDashboard />} />
+          <Route path="/answer-result" element={<AnswerResult />} />
           <Route path="/answer-lesson/:id" element={<AnswerLesson />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/add-category" element={<AddCategory />} />

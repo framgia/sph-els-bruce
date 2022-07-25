@@ -2,8 +2,14 @@ import { useState } from "react";
 import React from "react";
 import WordApi from "../../../api/WordApi";
 import swal from "sweetalert";
+import { useParams } from "react-router";
+import LessonApi from "../../../api/LessonApi";
+import { useEffect } from "react";
 
 const AddWord = () => {
+  const { id } = useParams();
+
+  const [lessonId, setLessonId] = useState(0);
   const [inputWord, setInputWord] = useState({
     word: "",
     choiceA: "",
@@ -19,6 +25,12 @@ const AddWord = () => {
     setInputWord({ ...inputWord, [e.target.name]: e.target.value });
   };
 
+  useEffect(() => {
+    LessonApi.getLessonId(id).then((res) => {
+      setLessonId(res.data[0].id);
+    });
+  }, []);
+
   const addWord = (e) => {
     e.preventDefault();
 
@@ -29,6 +41,7 @@ const AddWord = () => {
       choiceC: inputWord.choiceC,
       choiceD: inputWord.choiceD,
       answer: inputWord.answer,
+      lesson_id: lessonId,
     };
 
     WordApi.createWord(data)

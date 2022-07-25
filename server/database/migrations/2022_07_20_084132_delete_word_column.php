@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user', function (Blueprint $table) {
-            $table->id();
+        Schema::table('lessons', function (Blueprint $table) {
+            $table->dropColumn('word_id');
         });
     }
 
@@ -25,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user');
+        Schema::table('lessons', function (Blueprint $table) {
+            $table->foreignId('word_id')->after('category_id');
+        });
     }
 };

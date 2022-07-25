@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lesson;
 use App\Models\Word;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class WordController extends Controller
 {
-    public function store()
+    public function store(Lesson $lesson)
     {
         $validator = Validator::make(
             request()->all(),
@@ -19,6 +20,7 @@ class WordController extends Controller
                 'choiceC' => 'required|string',
                 'choiceD' => 'required|string',
                 'answer' => 'required|string',
+                'lesson_id' => 'required|integer',
             ]
         );
 
@@ -31,7 +33,7 @@ class WordController extends Controller
 
         $word = Word::create([
             'word' => request()->word,
-            'lesson_id' => 1,
+            'lesson_id' =>  request()->lesson_id,
             'choiceA' => request()->choiceA,
             'choiceB' => request()->choiceB,
             'choiceC' => request()->choiceC,

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CatergoryController;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\ResultController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\WordController;
 use Illuminate\Http\Request;
@@ -29,7 +30,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [UsersController::class, 'logout']);
     Route::post('/dashboad', [UsersController::class]);
     Route::post('/admin/create-word', [WordController::class, 'store']);
+    Route::get('/admin/get-lesson/{id}', [LessonController::class, 'select']);
+
+
+    Route::post('/create-result', [ResultController::class, 'create']);
+
     Route::get('/view-lesson/{id}', [LessonController::class, 'index']);
+    Route::post('/admin/create-lesson', [LessonController::class, 'create']);
+
 
     Route::post('/admin/create-category', [CatergoryController::class, 'create']);
     Route::get('/admin/view-category', [CatergoryController::class, 'index']);

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('word_id');
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('result_id');
+            $table->foreignId('result_id')->nullable();
             $table->text('name');
             $table->timestamps();
         });
