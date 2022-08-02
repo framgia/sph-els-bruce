@@ -32,7 +32,7 @@ const AddCategory = () => {
           name: res.data.data.title,
         };
         LessonApi.createLesson(data1).then((res) => {
-          swal("Success", res.data.message, "success");
+          swal("Success", "Category Added.", "success");
         });
 
         setTimeout(() => {

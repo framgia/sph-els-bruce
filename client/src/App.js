@@ -1,4 +1,5 @@
 import "./App.css";
+import "./assets/style.css";
 import Registration from "./pages/Registration";
 import Navbar from "./pages/Navbar";
 import Login from "./pages/Login";
@@ -10,6 +11,8 @@ import AnswerLesson from "./pages/components/user/AnswerLesson";
 import AddWord from "./pages/components/admin/AddWord";
 import LessonDashboard from "./pages/components/user/LessonDashboard";
 import AnswerResult from "./pages/components/user/AnswerResult.jsx";
+import WordsLearned from "./pages/components/user/WordsLearned";
+import Profile from "./pages/components/user/Profile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./pages/components/user/Dashboard";
 import axios from "axios";
@@ -33,6 +36,8 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/words-learned" element={<WordsLearned />} />
           <Route path="/lesson-dashboard" element={<LessonDashboard />} />
           <Route path="/answer-result" element={<AnswerResult />} />
           <Route path="/answer-lesson/:id" element={<AnswerLesson />} />

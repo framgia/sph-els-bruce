@@ -28,7 +28,8 @@ Route::post('/login', [UsersController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/', UsersController::class);
     Route::post('/logout', [UsersController::class, 'logout']);
-    Route::post('/dashboad', [UsersController::class]);
+    Route::get('/dashboard', [UsersController::class, 'index']);
+
     Route::post('/admin/create-word', [WordController::class, 'store']);
     Route::get('/admin/get-lesson/{id}', [LessonController::class, 'select']);
 
