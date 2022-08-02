@@ -29,7 +29,9 @@ const AnswerLesson = () => {
   return (
     <div className="card m-5">
       <div className="card-header">
-        <h5>Test Result</h5>
+        <h5>
+          Test Result ({location.state.score + " out of " + words.length})
+        </h5>
       </div>
       <div className="card-body">
         <h5 className="card-title">{category.title}</h5>
@@ -38,8 +40,8 @@ const AnswerLesson = () => {
         <div className="d-md-flex justify-content-center">
           <div className="m-5">
             <h2 className="text-primary">Result</h2>
-            {result.map((item) => (
-              <div className="word" key={item.id}>
+            {result.map((item, index) => (
+              <div className="word" key={index}>
                 <h6 className={item ? "text-success" : "text-danger"}>
                   {item ? "Correct" : "Wrong"}
                 </h6>
@@ -48,9 +50,9 @@ const AnswerLesson = () => {
           </div>
           <div className="m-5">
             <h2 className="text-primary">Word</h2>
-            {words.map((item) => {
+            {words.map((item, index) => {
               return (
-                <div className="word" key={item.id + item.word}>
+                <div className="word" key={index}>
                   <h6>{item.word}</h6>
                 </div>
               );
@@ -58,9 +60,9 @@ const AnswerLesson = () => {
           </div>
           <div className="m-5">
             <h2 className="text-primary">Answer</h2>
-            {words.map((item) => {
+            {words.map((item, index) => {
               return (
-                <div className="answer" key={item.id + item.answer}>
+                <div className="answer" key={index}>
                   <h6>{item.answer}</h6>
                 </div>
               );

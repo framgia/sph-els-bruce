@@ -2,3 +2,59 @@
 
     max-width: 500px !important;
 }
+
+.flex-100 {
+    margin-top: 2em;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.profile {
+    padding-top: 2em;
+    width: 25%;
+}
+
+.avatar img {
+    padding-right: 10px;
+}
+
+.activity {
+    width: 70%;
+    padding: 2em;
+    border-style: solid !important;
+    text-align: left;
+}
+
+
+.profile .d-flex .avatar {
+    width: 100px;
+}
+
+.activity .d-flex .avatar {
+    width: 80px;
+}
+
+.pe-auto {
+    cursor: pointer;
+}
+
+.day_ago {
+    color: #2125298f;
+    font-size: 1rem;
+}
+
+.left-40 {
+    width: 30%;
+}
+
+.left-40 .avatar img {
+    width: 300px;
+}
+
+.left-40 .name {
+    text-transform: uppercase;
+}
+
+.right-60 {
+    width: 65%;
+}

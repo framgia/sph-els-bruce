@@ -16,6 +16,15 @@ const UserApi = {
     };
     return BASEAPI.request(options);
   },
+
+  getuser: () => {
+    const options = {
+      method: "GET",
+      url: "/dashboard",
+    };
+
+    return BASEAPI.request(options);
+  },
 };
 
 export default UserApi;

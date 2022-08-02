@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 const AddWord = () => {
   const { id } = useParams();
-
+  const [select, setSelect] = useState();
   const [lessonId, setLessonId] = useState(0);
   const [inputWord, setInputWord] = useState({
     word: "",
@@ -69,13 +69,19 @@ const AddWord = () => {
             ></input>
             <span className="text-danger">{error_list.word}</span>
 
-            <h4 className="text-lg-start">Correct Answer</h4>
-            <input
-              type="text"
-              className="form-control  w-75"
-              onChange={handleInput}
-              name="answer"
-            ></input>
+            <h4 className="text-lg-start mt-2">Correct Answer</h4>
+
+            <div className="text-lg-start col form-group mt-2">
+              <select name="answer" onChange={handleInput}>
+                <option value="">Fill up choice first</option>
+                <option value={inputWord.choiceA}>{inputWord.choiceA}</option>
+                <option value={inputWord.choiceB}>{inputWord.choiceB}</option>
+                <option value={inputWord.choiceC}>{inputWord.choiceC}</option>
+                <option value={inputWord.choiceD}>{inputWord.choiceD}</option>
+              </select>
+              {select}
+            </div>
+
             <span className="text-danger">{error_list.answer}</span>
           </div>
 

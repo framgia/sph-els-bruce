@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import AdminApi from "../api/AdminApi";
@@ -74,6 +74,11 @@ const Navbar = () => {
           </Link>
         </li>
         <li className="nav-item">
+          <Link className="nav-link" to="/profile">
+            Profile
+          </Link>
+        </li>
+        <li className="nav-item">
           <button
             type="button"
             onClick={logoutSubmit}
@@ -88,7 +93,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary shadow sticky-top">
       <div className="container">
-        <Link className="navbar-brand" to="/  ">
+        <Link className="navbar-brand" to="/dashboard  ">
           E-Learning
         </Link>
       </div>

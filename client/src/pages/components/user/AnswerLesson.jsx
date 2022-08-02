@@ -53,10 +53,10 @@ const AnswerLesson = () => {
     questions();
   }, [page]);
 
-  const saveResult = (score) => {
+  const saveResult = (result) => {
     const data = {
       lesson_id: lessonID,
-      score: score,
+      score: result,
     };
     ResultApi.postResult(data);
   };
@@ -73,9 +73,9 @@ const AnswerLesson = () => {
           return false;
         }
       });
-      saveResult(score);
+      saveResult(result);
       navigate("/answer-result", {
-        state: { result, word, id },
+        state: { result, word, id, score },
       });
     }
   }, [page, selectedAnswer]);
