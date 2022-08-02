@@ -20,7 +20,7 @@ const Dashboard = () => {
   const [result, setResult] = useState([]);
 
   useEffect(() => {
-    UserApi.getuser().then((res) => {
+    UserApi.getUser().then((res) => {
       setUser(res.data.user[0]);
       setResult(res.data.result);
     });

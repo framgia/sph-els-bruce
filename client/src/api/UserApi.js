@@ -17,7 +17,7 @@ const UserApi = {
     return BASEAPI.request(options);
   },
 
-  getuser: () => {
+  getUser: () => {
     const options = {
       method: "GET",
       url: "/dashboard",
