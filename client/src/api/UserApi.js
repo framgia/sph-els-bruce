@@ -22,7 +22,6 @@ const UserApi = {
       method: "GET",
       url: "/dashboard",
     };
-
     return BASEAPI.request(options);
   },
 };

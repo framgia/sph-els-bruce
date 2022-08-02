@@ -58,7 +58,9 @@ const Dashboard = () => {
                 <img src={avatar} alt="..." className="rounded avatar" />
               </div>
               <div className="details">
-                <h5 className="name">{user.lastname + "," + user.firstname}</h5>
+                <h5 className="name">
+                  `{user.lastname}, {user.firstname}`
+                </h5>
                 <div className="words ">
                   Learned{" "}
                   <span className="text-primary ">
